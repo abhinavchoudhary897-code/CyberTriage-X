@@ -1,0 +1,86 @@
+[
+  {
+    "evidence_id": "EVD-20260918-6495D4F12DA9",
+    "stored_filename": "EVD-20260918-6495D4F12DA9.txt",
+    "original_filename": "EVD-20260918-6495D4F12DA9.txt",
+    "size_bytes": 145,
+    "extension": ".txt",
+    "md5": "7efac6623cd084ae56bb1e1169a1cdf0",
+    "sha256": "047d1a86eef08a7b8e439c6105469f362f05d4eceaf61f3fc752d376af53e89a",
+    "storage": "LOCAL FORENSIC VAULT",
+    "processing_status": "ACQUIRED",
+    "integrity_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EVD-20260918-6E5C16ABBB18",
+    "stored_filename": "EVD-20260918-6E5C16ABBB18.txt",
+    "original_filename": "EVD-20260918-6E5C16ABBB18.txt",
+    "size_bytes": 147,
+    "extension": ".txt",
+    "md5": "04737e6042d2cebad39c1eb9d0689731",
+    "sha256": "c6ffbd926e1cf9ba46b3cc4adce0069afcbf642d83c707abd8000586223e43ec",
+    "storage": "LOCAL FORENSIC VAULT",
+    "processing_status": "ACQUIRED",
+    "integrity_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EVD-20260918-74CBCCFF788C",
+    "stored_filename": "EVD-20260918-74CBCCFF788C.txt",
+    "original_filename": "EVD-20260918-74CBCCFF788C.txt",
+    "size_bytes": 146,
+    "extension": ".txt",
+    "md5": "f9c826554d95f045fa21ad2b5b41bd02",
+    "sha256": "eae6adede0b570dc00ea716a0de2c4c8b9618d226f4247522a310e63d7243fbb",
+    "storage": "LOCAL FORENSIC VAULT",
+    "processing_status": "ACQUIRED",
+    "integrity_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EVD-20260918-8ED2E8F14402",
+    "stored_filename": "EVD-20260918-8ED2E8F14402.txt",
+    "original_filename": "EVD-20260918-8ED2E8F14402.txt",
+    "size_bytes": 147,
+    "extension": ".txt",
+    "md5": "04737e6042d2cebad39c1eb9d0689731",
+    "sha256": "c6ffbd926e1cf9ba46b3cc4adce0069afcbf642d83c707abd8000586223e43ec",
+    "storage": "LOCAL FORENSIC VAULT",
+    "processing_status": "ACQUIRED",
+    "integrity_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EVD-20260918-939605508A1B",
+    "stored_filename": "EVD-20260918-939605508A1B.txt",
+    "original_filename": "EVD-20260918-939605508A1B.txt",
+    "size_bytes": 147,
+    "extension": ".txt",
+    "md5": "04737e6042d2cebad39c1eb9d0689731",
+    "sha256": "c6ffbd926e1cf9ba46b3cc4adce0069afcbf642d83c707abd8000586223e43ec",
+    "storage": "LOCAL FORENSIC VAULT",
+    "processing_status": "ACQUIRED",
+    "integrity_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EVD-20260918-BBF345127A46",
+    "stored_filename": "EVD-20260918-BBF345127A46.txt",
+    "original_filename": "EVD-20260918-BBF345127A46.txt",
+    "size_bytes": 146,
+    "extension": ".txt",
+    "md5": "f9c826554d95f045fa21ad2b5b41bd02",
+    "sha256": "eae6adede0b570dc00ea716a0de2c4c8b9618d226f4247522a310e63d7243fbb",
+    "storage": "LOCAL FORENSIC VAULT",
+    "processing_status": "ACQUIRED",
+    "integrity_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EVD-20260918-F888AB675A6F",
+    "stored_filename": "EVD-20260918-F888AB675A6F.txt",
+    "original_filename": "EVD-20260918-F888AB675A6F.txt",
+    "size_bytes": 147,
+    "extension": ".txt",
+    "md5": "04737e6042d2cebad39c1eb9d0689731",
+    "sha256": "c6ffbd926e1cf9ba46b3cc4adce0069afcbf642d83c707abd8000586223e43ec",
+    "storage": "LOCAL FORENSIC VAULT",
+    "processing_status": "ACQUIRED",
+    "integrity_status": "VERIFIED"
+  }
+]
