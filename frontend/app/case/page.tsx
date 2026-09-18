@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 
-const API = "http://127.0.0.1:8000";
+const API =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://127.0.0.1:8000";
 
 export default function CasePage() {
   const [caseId, setCaseId] = useState("CTX-2026-001");
@@ -52,17 +54,21 @@ export default function CasePage() {
       const data = JSON.parse(stored);
 
       setCaseId(data.caseId ?? "CTX-2026-001");
+
       setCaseName(
         data.caseName ??
           "Digital Forensic Investigation"
       );
+
       setInvestigator(
         data.investigator ??
           "Forensic Investigator"
       );
+
       setIncident(
         data.incident ?? "Cyber Incident"
       );
+
       setPriority(data.priority ?? "HIGH");
       setStatus(data.status ?? "ACTIVE");
     } catch {
@@ -150,15 +156,61 @@ export default function CasePage() {
               <div className="space-y-1">
 
                 <Nav label="Dashboard" href="/" icon="⌂" />
-                <Nav label="Evidence Vault" href="/evidence" icon="▣" />
-                <Nav label="Acquisition" href="/acquisition" icon="⇩" />
-                <Nav label="Classification" href="/classification" icon="◇" />
-                <Nav label="IOC Explorer" href="/ioc" icon="⌕" />
-                <Nav label="Correlation" href="/correlation" icon="⌁" />
-                <Nav label="Timeline" href="/timeline" icon="◷" />
-                <Nav label="Investigation" href="/investigation" icon="◎" />
-                <Nav label="Reports" href="/reports" icon="▤" />
-                <Nav label="Case Management" href="/case" icon="□" active />
+
+                <Nav
+                  label="Evidence Vault"
+                  href="/evidence"
+                  icon="▣"
+                />
+
+                <Nav
+                  label="Acquisition"
+                  href="/acquisition"
+                  icon="⇩"
+                />
+
+                <Nav
+                  label="Classification"
+                  href="/classification"
+                  icon="◇"
+                />
+
+                <Nav
+                  label="IOC Explorer"
+                  href="/ioc"
+                  icon="⌕"
+                />
+
+                <Nav
+                  label="Correlation"
+                  href="/correlation"
+                  icon="⌁"
+                />
+
+                <Nav
+                  label="Timeline"
+                  href="/timeline"
+                  icon="◷"
+                />
+
+                <Nav
+                  label="Investigation"
+                  href="/investigation"
+                  icon="◎"
+                />
+
+                <Nav
+                  label="Reports"
+                  href="/reports"
+                  icon="▤"
+                />
+
+                <Nav
+                  label="Case Management"
+                  href="/case"
+                  icon="□"
+                  active
+                />
 
               </div>
 
@@ -368,10 +420,25 @@ export default function CasePage() {
 
               <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
 
-                <Workflow label="Evidence" status="READY" />
-                <Workflow label="Analysis" status="READY" />
-                <Workflow label="Investigation" status="READY" />
-                <Workflow label="Reporting" status="READY" />
+                <Workflow
+                  label="Evidence"
+                  status="READY"
+                />
+
+                <Workflow
+                  label="Analysis"
+                  status="READY"
+                />
+
+                <Workflow
+                  label="Investigation"
+                  status="READY"
+                />
+
+                <Workflow
+                  label="Reporting"
+                  status="READY"
+                />
 
               </div>
 
@@ -411,6 +478,7 @@ function Nav({
           : "text-slate-500 hover:bg-white/[0.04]"
       }`}
     >
+
       <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/[0.04] text-[9px]">
         {icon}
       </span>
@@ -422,6 +490,7 @@ function Nav({
       {active && (
         <span className="ml-auto h-1.5 w-1.5 rounded-full bg-cyan-300" />
       )}
+
     </a>
   );
 }
@@ -437,6 +506,7 @@ function Field({
 }) {
   return (
     <div>
+
       <label className="text-[8px] font-bold uppercase tracking-widest text-slate-600">
         {label}
       </label>
@@ -448,6 +518,7 @@ function Field({
         }
         className="mt-2 w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-xs text-slate-300 outline-none focus:border-cyan-300/30"
       />
+
     </div>
   );
 }

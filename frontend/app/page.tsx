@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-const API = "http://127.0.0.1:8000";
+const API =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://127.0.0.1:8000";
 
 const DEFAULT_EVIDENCE_IDS = [
   "EVD-20260918-6495D4F12DA9",
@@ -330,7 +332,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#02050a] text-white">
-      {/* BACKGROUND GRID */}
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_10%,rgba(34,211,238,.12),transparent_30%),radial-gradient(circle_at_15%_70%,rgba(59,130,246,.08),transparent_28%)]" />
 
@@ -342,7 +343,6 @@ export default function Home() {
       </div>
 
       <div className="relative z-10 flex min-h-screen">
-        {/* SIDEBAR */}
         <aside className="hidden w-[270px] shrink-0 border-r border-white/10 bg-[#040811]/95 backdrop-blur-2xl lg:block">
           <div className="sticky top-0 flex h-screen flex-col">
             <div className="border-b border-white/10 p-6">
@@ -369,7 +369,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* CASE */}
             <div className="border-b border-white/10 p-5">
               <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-slate-600">
                 Active Case
@@ -395,7 +394,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* NAVIGATION */}
             <nav className="flex-1 overflow-y-auto p-4">
               <p className="mb-3 px-3 text-[9px] font-bold uppercase tracking-[0.25em] text-slate-700">
                 Investigation
@@ -447,7 +445,6 @@ export default function Home() {
               </div>
             </nav>
 
-            {/* BACKEND STATUS */}
             <div className="border-t border-white/10 p-5">
               <div className="rounded-2xl border border-white/5 bg-gradient-to-br from-white/[0.035] to-transparent p-4">
                 <div className="flex items-center justify-between">
@@ -497,9 +494,7 @@ export default function Home() {
           </div>
         </aside>
 
-        {/* MAIN */}
         <div className="min-w-0 flex-1">
-          {/* HEADER */}
           <header className="sticky top-0 z-40 border-b border-white/10 bg-[#050911]/85 backdrop-blur-2xl">
             <div className="flex h-[72px] items-center justify-between px-5 lg:px-8">
               <div>
@@ -540,7 +535,6 @@ export default function Home() {
           </header>
 
           <div className="mx-auto max-w-[1550px] p-5 lg:p-8">
-            {/* HERO */}
             <section className="relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-[#0d1a2a] via-[#07101b] to-[#03070c] shadow-[0_30px_100px_rgba(0,0,0,.35)]">
               <div className="absolute right-[-100px] top-[-140px] h-[400px] w-[400px] rounded-full border border-cyan-300/[0.04] bg-cyan-300/[0.025] blur-[2px]" />
 
@@ -595,7 +589,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* SYSTEM OVERVIEW */}
                 <div className="border-t border-white/10 bg-black/20 p-7 lg:border-l lg:border-t-0">
                   <div className="flex items-center justify-between">
                     <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-slate-600">
@@ -608,67 +601,19 @@ export default function Home() {
                   </div>
 
                   <div className="mt-6 space-y-2">
-                    <StatusRow
-                      label="Evidence Engine"
-                      status={stageStatus(
-                        "EVIDENCE"
-                      )}
-                    />
-
-                    <StatusRow
-                      label="Acquisition Engine"
-                      status={stageStatus(
-                        "ACQUIRE"
-                      )}
-                    />
-
-                    <StatusRow
-                      label="Classification Engine"
-                      status={stageStatus(
-                        "CLASSIFY"
-                      )}
-                    />
-
-                    <StatusRow
-                      label="Extraction Engine"
-                      status={stageStatus(
-                        "EXTRACT"
-                      )}
-                    />
-
-                    <StatusRow
-                      label="Correlation Engine"
-                      status={stageStatus(
-                        "CORRELATE"
-                      )}
-                    />
-
-                    <StatusRow
-                      label="Timeline Engine"
-                      status={stageStatus(
-                        "TIMELINE"
-                      )}
-                    />
-
-                    <StatusRow
-                      label="Investigation Engine"
-                      status={stageStatus(
-                        "INVESTIGATE"
-                      )}
-                    />
-
-                    <StatusRow
-                      label="Report Engine"
-                      status={stageStatus(
-                        "REPORT"
-                      )}
-                    />
+                    <StatusRow label="Evidence Engine" status={stageStatus("EVIDENCE")} />
+                    <StatusRow label="Acquisition Engine" status={stageStatus("ACQUIRE")} />
+                    <StatusRow label="Classification Engine" status={stageStatus("CLASSIFY")} />
+                    <StatusRow label="Extraction Engine" status={stageStatus("EXTRACT")} />
+                    <StatusRow label="Correlation Engine" status={stageStatus("CORRELATE")} />
+                    <StatusRow label="Timeline Engine" status={stageStatus("TIMELINE")} />
+                    <StatusRow label="Investigation Engine" status={stageStatus("INVESTIGATE")} />
+                    <StatusRow label="Report Engine" status={stageStatus("REPORT")} />
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* METRICS */}
             <section className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
               <DashboardMetric
                 label="Evidence Sources"
@@ -712,31 +657,12 @@ export default function Home() {
               />
             </section>
 
-            {/* SECONDARY METRICS */}
             <section className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-3">
-              <MiniMetric
-                label="Timeline Events"
-                value={
-                  dashboard.timeline
-                }
-              />
-
-              <MiniMetric
-                label="Correlations"
-                value={
-                  dashboard.correlations
-                }
-              />
-
-              <MiniMetric
-                label="Risk Level"
-                value={
-                  dashboard.riskLevel
-                }
-              />
+              <MiniMetric label="Timeline Events" value={dashboard.timeline} />
+              <MiniMetric label="Correlations" value={dashboard.correlations} />
+              <MiniMetric label="Risk Level" value={dashboard.riskLevel} />
             </section>
 
-            {/* PIPELINE */}
             <section className="mt-5 overflow-hidden rounded-[28px] border border-white/10 bg-[#070c14] shadow-[0_25px_80px_rgba(0,0,0,.25)]">
               <div className="border-b border-white/10 px-6 py-5">
                 <div className="flex items-center justify-between">
@@ -768,105 +694,17 @@ export default function Home() {
               </div>
 
               <div className="grid gap-3 p-6 sm:grid-cols-2 lg:grid-cols-4">
-                <WorkflowCard
-                  number="01"
-                  title="Evidence"
-                  description="Register digital artifacts."
-                  active={stageIsActive(
-                    "EVIDENCE"
-                  )}
-                  status={stageStatus(
-                    "EVIDENCE"
-                  )}
-                />
-
-                <WorkflowCard
-                  number="02"
-                  title="Acquire"
-                  description="Preserve and fingerprint evidence."
-                  active={stageIsActive(
-                    "ACQUIRE"
-                  )}
-                  status={stageStatus(
-                    "ACQUIRE"
-                  )}
-                />
-
-                <WorkflowCard
-                  number="03"
-                  title="Classify"
-                  description="Identify evidence type and category."
-                  active={stageIsActive(
-                    "CLASSIFY"
-                  )}
-                  status={stageStatus(
-                    "CLASSIFY"
-                  )}
-                />
-
-                <WorkflowCard
-                  number="04"
-                  title="Extract"
-                  description="Discover forensic indicators."
-                  active={stageIsActive(
-                    "EXTRACT"
-                  )}
-                  status={stageStatus(
-                    "EXTRACT"
-                  )}
-                />
-
-                <WorkflowCard
-                  number="05"
-                  title="Correlate"
-                  description="Connect evidence relationships."
-                  active={stageIsActive(
-                    "CORRELATE"
-                  )}
-                  status={stageStatus(
-                    "CORRELATE"
-                  )}
-                />
-
-                <WorkflowCard
-                  number="06"
-                  title="Timeline"
-                  description="Reconstruct chronological events."
-                  active={stageIsActive(
-                    "TIMELINE"
-                  )}
-                  status={stageStatus(
-                    "TIMELINE"
-                  )}
-                />
-
-                <WorkflowCard
-                  number="07"
-                  title="Investigate"
-                  description="Build investigator context."
-                  active={stageIsActive(
-                    "INVESTIGATE"
-                  )}
-                  status={stageStatus(
-                    "INVESTIGATE"
-                  )}
-                />
-
-                <WorkflowCard
-                  number="08"
-                  title="Report"
-                  description="Generate case documentation."
-                  active={stageIsActive(
-                    "REPORT"
-                  )}
-                  status={stageStatus(
-                    "REPORT"
-                  )}
-                />
+                <WorkflowCard number="01" title="Evidence" description="Register digital artifacts." active={stageIsActive("EVIDENCE")} status={stageStatus("EVIDENCE")} />
+                <WorkflowCard number="02" title="Acquire" description="Preserve and fingerprint evidence." active={stageIsActive("ACQUIRE")} status={stageStatus("ACQUIRE")} />
+                <WorkflowCard number="03" title="Classify" description="Identify evidence type and category." active={stageIsActive("CLASSIFY")} status={stageStatus("CLASSIFY")} />
+                <WorkflowCard number="04" title="Extract" description="Discover forensic indicators." active={stageIsActive("EXTRACT")} status={stageStatus("EXTRACT")} />
+                <WorkflowCard number="05" title="Correlate" description="Connect evidence relationships." active={stageIsActive("CORRELATE")} status={stageStatus("CORRELATE")} />
+                <WorkflowCard number="06" title="Timeline" description="Reconstruct chronological events." active={stageIsActive("TIMELINE")} status={stageStatus("TIMELINE")} />
+                <WorkflowCard number="07" title="Investigate" description="Build investigator context." active={stageIsActive("INVESTIGATE")} status={stageStatus("INVESTIGATE")} />
+                <WorkflowCard number="08" title="Report" description="Generate case documentation." active={stageIsActive("REPORT")} status={stageStatus("REPORT")} />
               </div>
             </section>
 
-            {/* FORENSIC COMMAND PANEL */}
             <section className="mt-5 grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
               <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-[#091421] to-[#050a11] p-6">
                 <div className="absolute right-[-60px] top-[-60px] h-48 w-48 rounded-full border border-cyan-300/[0.06]" />
@@ -877,23 +715,9 @@ export default function Home() {
                 </p>
 
                 <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                  <CommandStat
-                    label="Pipeline"
-                    value={`${activeStages}/8`}
-                    detail="ACTIVE STAGES"
-                  />
-
-                  <CommandStat
-                    label="Integrity"
-                    value="SHA-256"
-                    detail="PRIMARY HASH"
-                  />
-
-                  <CommandStat
-                    label="Mode"
-                    value="LOCAL"
-                    detail="FORENSIC VAULT"
-                  />
+                  <CommandStat label="Pipeline" value={`${activeStages}/8`} detail="ACTIVE STAGES" />
+                  <CommandStat label="Integrity" value="SHA-256" detail="PRIMARY HASH" />
+                  <CommandStat label="Mode" value="LOCAL" detail="FORENSIC VAULT" />
                 </div>
 
                 <div className="mt-5 rounded-2xl border border-white/5 bg-black/20 p-4">
@@ -909,41 +733,10 @@ export default function Home() {
                   </div>
 
                   <div className="mt-4 space-y-2">
-                    <ActivityLine
-                      label="Evidence acquisition"
-                      value={
-                        stageStatus(
-                          "ACQUIRE"
-                        )
-                      }
-                    />
-
-                    <ActivityLine
-                      label="IOC extraction"
-                      value={
-                        stageStatus(
-                          "EXTRACT"
-                        )
-                      }
-                    />
-
-                    <ActivityLine
-                      label="Cross-evidence correlation"
-                      value={
-                        stageStatus(
-                          "CORRELATE"
-                        )
-                      }
-                    />
-
-                    <ActivityLine
-                      label="Investigation reconstruction"
-                      value={
-                        stageStatus(
-                          "INVESTIGATE"
-                        )
-                      }
-                    />
+                    <ActivityLine label="Evidence acquisition" value={stageStatus("ACQUIRE")} />
+                    <ActivityLine label="IOC extraction" value={stageStatus("EXTRACT")} />
+                    <ActivityLine label="Cross-evidence correlation" value={stageStatus("CORRELATE")} />
+                    <ActivityLine label="Investigation reconstruction" value={stageStatus("INVESTIGATE")} />
                   </div>
                 </div>
               </div>
@@ -956,7 +749,6 @@ export default function Home() {
                 <div className="mt-6 flex items-center justify-center">
                   <div className="relative flex h-40 w-40 items-center justify-center rounded-full border border-cyan-300/10 bg-[radial-gradient(circle,rgba(34,211,238,.08),transparent_60%)]">
                     <div className="absolute inset-4 rounded-full border border-cyan-300/10" />
-
                     <div className="absolute inset-8 rounded-full border border-cyan-300/[0.08]" />
 
                     <div className="text-center">
@@ -984,7 +776,6 @@ export default function Home() {
               </div>
             </section>
 
-            {/* QUICK ACTIONS */}
             <section className="mt-5 grid gap-5 lg:grid-cols-3">
               <QuickAction
                 title="Evidence Acquisition"
@@ -1008,7 +799,6 @@ export default function Home() {
               />
             </section>
 
-            {/* FOOTER */}
             <footer className="mt-8 flex flex-col justify-between gap-3 border-t border-white/5 py-6 text-[8px] uppercase tracking-[0.2em] text-slate-700 sm:flex-row">
               <span>
                 CYBERTRIAGE X / SIH1744
