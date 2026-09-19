@@ -36,67 +36,49 @@ FORENSIC_PIPELINE = [
         "stage": "EVIDENCE",
         "name": "Evidence Collection",
         "status": "ACTIVE",
-        "description": (
-            "Receive and register digital evidence."
-        ),
+        "description": "Receive and register digital evidence.",
     },
     {
         "stage": "ACQUIRE",
         "name": "Evidence Acquisition",
         "status": "ACTIVE",
-        "description": (
-            "Preserve evidence and generate cryptographic fingerprints."
-        ),
+        "description": "Preserve evidence and generate cryptographic fingerprints.",
     },
     {
         "stage": "CLASSIFY",
         "name": "Evidence Classification",
         "status": "ACTIVE",
-        "description": (
-            "Identify evidence type, format and forensic category."
-        ),
+        "description": "Identify evidence type, format and forensic category.",
     },
     {
         "stage": "EXTRACT",
         "name": "Artifact & IOC Extraction",
         "status": "ACTIVE",
-        "description": (
-            "Extract observable forensic indicators and artifacts."
-        ),
+        "description": "Extract observable forensic indicators and artifacts.",
     },
     {
         "stage": "CORRELATE",
         "name": "Cross-Evidence Correlation",
         "status": "ACTIVE",
-        "description": (
-            "Connect shared indicators and temporally related events."
-        ),
+        "description": "Connect shared indicators and temporally related events.",
     },
     {
         "stage": "TIMELINE",
         "name": "Forensic Timeline",
         "status": "ACTIVE",
-        "description": (
-            "Reconstruct chronological forensic events "
-            "and relationships."
-        ),
+        "description": "Reconstruct chronological forensic events and relationships.",
     },
     {
         "stage": "INVESTIGATE",
         "name": "Investigation Workspace",
         "status": "ACTIVE",
-        "description": (
-            "Consolidate evidence, findings, risk "
-            "and investigator context."
-        ),
+        "description": "Consolidate evidence, findings, risk and investigator context.",
     },
     {
         "stage": "REPORT",
         "name": "Forensic Reporting",
         "status": "ACTIVE",
-        "description": (
-            "Generate structured forensic investigation reports."
-        ),
+        "description": "Generate structured forensic investigation reports.",
     },
 ]
 
@@ -107,16 +89,13 @@ FORENSIC_PIPELINE = [
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-
     print()
     print("=" * 65)
     print(" CYBERTRIAGE X - FORENSIC BACKEND")
     print("=" * 65)
-
     print(f" Version : {APP_VERSION}")
     print(" Mode    : Digital Forensic Triage")
     print(" Status  : INITIALIZING")
-
     print("=" * 65)
 
     print("[+] Evidence acquisition engine available")
@@ -164,6 +143,10 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        "https://my-n0m3ycvwg-code-monarchs.vercel.app",
+        "https://my-61jyrzz6w-code-monarchs.vercel.app",
+        "https://my-jfp9fauag-code-monarchs.vercel.app",
+        "https://my-app-omega-nine-76.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -187,10 +170,7 @@ async def request_tracking_middleware(
         response = await call_next(request)
 
     except Exception as error:
-
-        duration = (
-            time.perf_counter() - start_time
-        ) * 1000
+        duration = (time.perf_counter() - start_time) * 1000
 
         print(
             f"[ERROR] "
@@ -210,15 +190,10 @@ async def request_tracking_middleware(
             },
         )
 
-    duration = (
-        time.perf_counter() - start_time
-    ) * 1000
+    duration = (time.perf_counter() - start_time) * 1000
 
     response.headers["X-Request-ID"] = request_id
-
-    response.headers["X-Processing-Time-MS"] = (
-        f"{duration:.2f}"
-    )
+    response.headers["X-Processing-Time-MS"] = f"{duration:.2f}"
 
     return response
 
@@ -240,30 +215,23 @@ app.include_router(evidence_router)
     summary="CyberTriage system overview",
 )
 async def root():
-
     return {
         "success": True,
-
         "system": {
             "name": APP_NAME,
             "version": APP_VERSION,
             "status": "OPERATIONAL",
             "mode": "FORENSIC TRIAGE",
         },
-
         "problem_statement": (
             "Creating a Cyber Triage Tool "
             "to Streamline Digital Forensic Investigation"
         ),
-
         "workflow": [
             stage["stage"]
             for stage in FORENSIC_PIPELINE
         ],
-
-        "message": (
-            "CyberTriage X forensic backend is online."
-        ),
+        "message": "CyberTriage X forensic backend is online.",
     }
 
 
@@ -277,20 +245,12 @@ async def root():
     summary="Backend health check",
 )
 async def health_check():
-
     return {
         "success": True,
-
         "status": "HEALTHY",
-
         "service": APP_NAME,
-
         "version": APP_VERSION,
-
-        "timestamp": (
-            datetime.now(timezone.utc).isoformat()
-        ),
-
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "components": {
             "api": "ONLINE",
             "evidence_acquisition": "ONLINE",
@@ -314,7 +274,6 @@ async def health_check():
     summary="Get forensic pipeline status",
 )
 async def pipeline_status():
-
     active_stages = sum(
         stage["status"] == "ACTIVE"
         for stage in FORENSIC_PIPELINE
@@ -322,15 +281,9 @@ async def pipeline_status():
 
     return {
         "success": True,
-
         "pipeline": FORENSIC_PIPELINE,
-
-        "total_stages": len(
-            FORENSIC_PIPELINE
-        ),
-
+        "total_stages": len(FORENSIC_PIPELINE),
         "active_stages": active_stages,
-
         "pipeline_status": (
             "OPERATIONAL"
             if active_stages == len(FORENSIC_PIPELINE)
@@ -349,18 +302,11 @@ async def pipeline_status():
     summary="Get CyberTriage system information",
 )
 async def system_information():
-
     return {
         "platform": APP_NAME,
-
         "version": APP_VERSION,
-
         "status": "OPERATIONAL",
-
-        "architecture": (
-            "Modular Forensic Backend"
-        ),
-
+        "architecture": "Modular Forensic Backend",
         "capabilities": [
             "Evidence Acquisition",
             "Cryptographic Integrity",
@@ -373,17 +319,14 @@ async def system_information():
             "Investigation Workspace",
             "Forensic Reporting",
         ],
-
         "pipeline": [
             stage["stage"]
             for stage in FORENSIC_PIPELINE
         ],
-
         "integrity": {
             "primary_hash": "SHA-256",
             "secondary_hash": "MD5",
         },
-
         "api": {
             "documentation": "/docs",
             "openapi": "/openapi.json",
