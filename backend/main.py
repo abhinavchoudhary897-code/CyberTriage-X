@@ -143,11 +143,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "https://my-n0m3ycvwg-code-monarchs.vercel.app",
-        "https://my-61jyrzz6w-code-monarchs.vercel.app",
-        "https://my-jfp9fauag-code-monarchs.vercel.app",
-        "https://my-app-omega-nine-76.vercel.app",
     ],
+    allow_origin_regex=r"https://.*\.vercel\.app$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
